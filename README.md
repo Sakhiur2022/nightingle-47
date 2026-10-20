@@ -1,4 +1,4 @@
-# FuGuard reproduction (fixed, notebook-driven) - Colab edition
+# FuGuard reproduction 
 
 ## Colab quick start
 1. Upload `COLAB_START_HERE.ipynb` to Colab (or open it from Drive), set **Runtime → GPU**.
