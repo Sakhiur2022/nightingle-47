@@ -1,0 +1,6 @@
+# Colab already ships torch, torchvision, numpy, scipy, pandas, scikit-learn, matplotlib, nbformat.
+# Do NOT reinstall torch on Colab. Only these two are missing:
+geomloss>=0.2.6
+diffusers>=0.32
+huggingface_hub
+safetensors
