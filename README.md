@@ -1,7 +1,7 @@
-# FuGuard reproduction 
+# FuGuard reproduction
 
 ## Colab quick start
-1. Upload `COLAB_START_HERE.ipynb` to Colab (or open it from Drive), set **Runtime → GPU**.
+1. Upload `COLAB_START_HERE.ipynb` to Colab (or open it from Drive), set **Runtime → GPU**. It is an all-in-one notebook: every numbered notebook's blocks are in it, in order, so you can run the whole workflow from this one file.
 2. Run it top to bottom: it asks for `FuGuard_Reproduction_Colab.zip`, unzips to `/content/FuGuard_Reproduction`, installs the two missing packages
    (`requirements-colab.txt`; torch is already on Colab - do not reinstall it) and runs a synthetic smoke test.
 3. Open the numbered notebooks from Colab's file browser. Each one finds the project at `/content` and re-installs the two packages
@@ -9,6 +9,7 @@
 4. All data (`data/`), cached checkpoints (`artifacts/`) and results (`results/`) live on the Colab VM. It is wiped when the runtime
    is recycled: call `colab.zip_results()` (end of `COLAB_START_HERE` and `03b_figures`) to download them; `colab.backup_to_drive()` is an optional alternative.
    Finished runs are saved immediately, so after a disconnect you re-run the cell and it resumes.
+CIFAR-10 is fetched from the Hugging Face dataset `Sakhiur/blue-bird-77` (`cifar-10/cifar-10-batches-py`); torchvision's downloader is only a fallback.
 Not tested on Colab itself (see `docs/FIXES_AND_DEVIATIONS.md`, verification status).
 
 Goal: reproduce the paper's tables and figures from the official repo's code, with the repo's bugs fixed
