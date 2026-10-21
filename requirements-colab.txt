@@ -4,3 +4,4 @@ geomloss>=0.2.6
 diffusers>=0.32
 huggingface_hub
 safetensors
+# Colab's preinstalled torchao is incompatible with current diffusers; the notebooks run `pip uninstall -y torchao` (unused here).
