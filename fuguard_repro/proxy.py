@@ -25,10 +25,37 @@ class StubVAE(torch.nn.Module):
         return _Out(sample=self.dec(z))
 
 
+def _fix_torchao():
+    """Colab ships a torchao that is too old for current diffusers ('cannot import name FqnToConfig').
+    We never use torchao, so remove it if it is installed but broken. If the import still fails afterwards,
+    restart the runtime (Runtime > Restart session) and re-run."""
+    import importlib
+    import importlib.util
+    import subprocess
+    import sys
+    if importlib.util.find_spec("torchao") is None:
+        return
+    try:
+        from torchao.quantization import FqnToConfig  # noqa: F401
+        return
+    except Exception:  # noqa: BLE001
+        pass
+    print("[fix] uninstalling incompatible torchao (not used by this project)")
+    subprocess.run([sys.executable, "-m", "pip", "uninstall", "-y", "-q", "torchao"], check=False)
+    for m in [k for k in sys.modules if k.split(".")[0] in ("torchao", "diffusers")]:
+        del sys.modules[m]
+    importlib.invalidate_caches()
+
+
 def load_vae(vae_id, device):
     if vae_id == "stub":
         return StubVAE().to(device).eval()
-    from diffusers import AutoencoderKL  # needs internet on first call (Hugging Face)
+    _fix_torchao()
+    try:
+        from diffusers import AutoencoderKL  # needs internet on first call (Hugging Face)
+    except Exception as e:  # noqa: BLE001
+        raise RuntimeError(f"diffusers import failed ({e!r}). Run `!pip uninstall -y torchao`, then Runtime > Restart session "
+                           "and re-run from the bootstrap block.") from e
     return AutoencoderKL.from_pretrained(vae_id).to(device).eval()
 
 

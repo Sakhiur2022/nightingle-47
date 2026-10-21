@@ -106,21 +106,30 @@ def tail_log(log="logs/run.log", n=25):
     print("".join(p.read_text().splitlines(True)[-n:]) if p.exists() else f"{p} does not exist yet")
 
 
-def fetch_awe_dataset(repo="https://github.com/youngmanyd/NGIT-2022-AWE-Industrial-Dataset"):
-    """Clone the AWE dataset repo and link the '<k>chips' folders into data/AWE/. UNTESTED: the repo layout was
-    not inspected while writing this; if no '<k>chips' folders are found it tells you what to do."""
-    raw = ROOT / "data" / "_awe_clone"
-    if not raw.exists():
-        subprocess.run(["git", "clone", "--depth", "1", repo, str(raw)], check=True)
-    dst = ROOT / "data" / "AWE"
-    dst.mkdir(parents=True, exist_ok=True)
-    found = 0
-    for k in range(6):
-        hits = [p for p in raw.rglob(f"{k}chips") if p.is_dir()]
-        if hits and not (dst / f"{k}chips").exists():
-            os.symlink(hits[0], dst / f"{k}chips")
-        found += bool(hits)
-    print(f"linked {found}/6 '<k>chips' folders into {dst}")
-    if found < 6:
-        print("Not all folders found: open data/_awe_clone, follow the dataset README (it may use a download link "
-              "or Git LFS) and place 0chips/ ... 5chips/ (with the *_<group>.json files) in data/AWE/.")
+def fetch_awe_dataset(source=None, repo="https://github.com/youngmanyd/NGIT-2022-AWE-Industrial-Dataset"):
+    """Make the AWE dataset available under data/_awe_clone and check its layout.
+    source=None            -> git clone (about 2 GB, 50 JSON files)
+    source='/path/x.zip'   -> unzip your copy (e.g. NGIT-2022-AWE-Industrial-Dataset-master.zip from Drive)
+    source='/path/folder'  -> use an existing folder (e.g. on a mounted Drive)
+    Expected layout: Dataset/normal, Dataset/1chip, Dataset/2chips ... Dataset/5chips (the nesting depth does not matter)."""
+    from .awe_prep import find_awe_root, list_dataset
+    dst = ROOT / "data" / "_awe_clone"
+    if source is None:
+        if not dst.exists():
+            subprocess.run(["git", "clone", "--depth", "1", repo, str(dst)], check=True)
+    else:
+        src = Path(source)
+        if src.suffix == ".zip":
+            with zipfile.ZipFile(src) as z:
+                z.extractall(dst)
+        elif src.is_dir():
+            if not dst.exists():
+                dst.parent.mkdir(parents=True, exist_ok=True)
+                os.symlink(src, dst)
+        else:
+            raise FileNotFoundError(source)
+    root = find_awe_root(dst)
+    counts = {s: len(g) for s, g in list_dataset(root).items()}
+    print("AWE root:", root)
+    print("files found per state (0=normal, 1..5=chips):", counts, "- expected 7, 8, 8, 8, 8, 8")
+    return root

@@ -51,6 +51,28 @@ def _find_eurosat(root):
     return None
 
 
+def _load_cifar10(root, mean, std):
+    """CIFAR-10 from the Hugging Face copy (Sakhiur/blue-bird-77); falls back to torchvision's downloader."""
+    from . import hf_data
+    try:
+        hf_data.fetch_cifar10(root)
+        txu, ty, exu, ey = hf_data.load_cifar10_arrays(root)
+        m = torch.tensor(mean).view(1, 3, 1, 1)
+        s = torch.tensor(std).view(1, 3, 1, 1)
+        f = lambda a: (torch.from_numpy(a).float() / 255.0 - m) / s  # noqa: E731  (= ToTensor + Normalize)
+        return f(txu), torch.from_numpy(ty).long(), f(exu), torch.from_numpy(ey).long()
+    except Exception as e:  # noqa: BLE001
+        print(f"[warn] Hugging Face CIFAR-10 failed ({e!r}); falling back to torchvision download")
+        from torchvision import datasets
+        import torchvision.transforms as T
+        tf = T.Compose([T.ToTensor(), T.Normalize(mean, std)])
+        tr = datasets.CIFAR10(str(root), train=True, download=True, transform=tf)
+        te = datasets.CIFAR10(str(root), train=False, download=True, transform=tf)
+        xtr, ytr = _collect(tr)
+        xte, yte = _collect(te)
+        return xtr, ytr, xte, yte
+
+
 def load_raw_image_dataset(name, root, seed):
     import torchvision
     import torchvision.transforms as T
@@ -58,9 +80,7 @@ def load_raw_image_dataset(name, root, seed):
     mean, std = _NORM[name]
     norm = T.Normalize(mean, std)
     if name == "CIFAR10":
-        tf = T.Compose([T.ToTensor(), norm])
-        tr = datasets.CIFAR10(str(root), train=True, download=True, transform=tf)
-        te = datasets.CIFAR10(str(root), train=False, download=True, transform=tf)
+        return _load_cifar10(root, mean, std)
     elif name == "CIFAR100":
         tf = T.Compose([T.ToTensor(), norm])
         tr = datasets.CIFAR100(str(root), train=True, download=True, transform=tf)
