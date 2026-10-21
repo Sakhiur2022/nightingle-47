@@ -6,10 +6,11 @@
 * **NOT executed:** anything that needs PyTorch (data prep, FL engine, the six methods, smoke test) - torch could not be installed in the
   authoring sandbox (disk). The torch code is a careful port but **unrun**. Run `notebooks/00_setup/00_environment_and_paths.ipynb` first:
   its synthetic smoke test exercises all methods (+ AWE) in about a minute and will surface any slip.
-* The AWE pipeline was never run on the real dataset; `colab.fetch_awe_dataset()` (git clone + link folders) is a guess at the repo layout.
+* AWE: the official code reads `<k>chips/<k>chips_<g>.json` (k=0..5) and silently skips missing files, but the real dataset is `Dataset/normal`, `1chip`, `2chips`..`5chips` (capital-N `Normal_0.json`). `awe_prep.py` maps it explicitly (case-insensitive, errors on missing files). Preparation was tested end-to-end on a fake tree mirroring the real listing; the JSON field names `vibr_UB`/`vibr_LB` come from the authors' code and are unverified on the real files. Training on AWE is still unrun.
 * Colab edition additions: project found at `/content/FuGuard_Reproduction`, `requirements-colab.txt` (no torch reinstall),
   `torch.load(..., weights_only=False)` (newer torch defaults to True and would reject our own files), `colab.py` helpers,
   `scripts/prepare_data.py`. None of it has been run on a real Colab runtime.
+* CIFAR-10 source: `hf_data.py` downloads `cifar-10/cifar-10-batches-py` from `Sakhiur/blue-bird-77` and reads the pickles directly (same content/order as torchvision; md5 compared with torchvision's checksums and only warned on). The `.npy` and `.tar.gz` files in that repo are not used by default (`fetch_cifar10(use_tarball=True)` extracts the tarball). Verified from the repo's file listing only; the download itself has not been run.
 
 ## Bugs in the official repo that are fixed here
 | # | Where | Problem | Fix |
