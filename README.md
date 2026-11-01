@@ -1,4 +1,4 @@
-# FuGuard reproduction
+# FuGuard reproduction (fixed, notebook-driven) - Colab edition
 
 ## Colab quick start
 1. Upload `COLAB_START_HERE.ipynb` to Colab (or open it from Drive), set **Runtime → GPU**. It is an all-in-one notebook: every numbered notebook's blocks are in it, in order, so you can run the whole workflow from this one file.
@@ -14,6 +14,28 @@ Not tested on Colab itself (see `docs/FIXES_AND_DEVIATIONS.md`, verification sta
 
 Goal: reproduce the paper's tables and figures from the official repo's code, with the repo's bugs fixed
 (see `docs/FIXES_AND_DEVIATIONS.md` - **read the verification status there first**).
+
+## One command (local machine)
+```
+python run_all.py --dry-run            # show every command first
+python run_all.py --quick              # pilot: CIFAR-10, seed 0, FedSGA + FuGuard (install, smoke test, data, Table II protocol, reports)
+python run_all.py                      # everything except AWE (long)
+python run_all.py --with-awe clone     # + AWE (or --with-awe <zip-or-folder>)
+```
+It runs `pip install -r requirements.txt` (keeping an existing torch/CUDA build), the smoke test, data preparation, all experiments and the table/figure
+builders, logging to `logs/`. It is resumable: after an interruption run the same command again. Use `--skip-install` once dependencies are in, `--stages ...` to pick steps.
+
+## Download datasets to a folder of your choice
+```
+python scripts/download_datasets.py --dest E:\fuguard_data --only cifar10      # Hugging Face (Sakhiur/blue-bird-77)
+python scripts/download_datasets.py --dest E:\fuguard_data --only svhn --source hf
+python scripts/download_datasets.py --dest E:\fuguard_data --only cifar100 --source hf
+python scripts/download_datasets.py --dest E:\fuguard_data --only eurosat
+python scripts/download_datasets.py --dest E:\fuguard_data --only awe --awe-source <zip-or-folder>   # omit --awe-source to git clone
+python scripts/download_datasets.py --dest E:\fuguard_data --check
+```
+The downloader checks your own Hugging Face repo (`Sakhiur/blue-bird-77`, any folder name) before the official site / public mirrors, so anything you upload there is used automatically.
+Then `set FUGUARD_DATA_DIR=E:\fuguard_data` (PowerShell: `$env:FUGUARD_DATA_DIR="E:\fuguard_data"`) before `run_all.py`; processed splits are stored there too.
 
 ## Run order
 | Step | Notebook | Produces |
