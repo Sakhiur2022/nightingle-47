@@ -85,7 +85,10 @@ def _evaluate(task, model):
 
 
 def ckpt_path(cfg, seed):
-    blob = json.dumps({k: cfg.get(k) for k in _CKPT_KEYS} | {"seed": seed}, sort_keys=True, default=str)
+    key = {k: cfg.get(k) for k in _CKPT_KEYS} | {"seed": seed}
+    if cfg.get("trigger_mode", "repo") != "repo":      # default runs keep their old checkpoint hashes
+        key["trigger_mode"] = cfg["trigger_mode"]
+    blob = json.dumps(key, sort_keys=True, default=str)
     h = hashlib.md5(blob.encode()).hexdigest()[:10]
     return CKPT_DIR / cfg["tag"] / f"seed{seed}_{h}.pt"
 
