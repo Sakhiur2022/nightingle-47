@@ -83,7 +83,8 @@ def image_proxy(vae, x, y, cfg, device):
         z_new = z + cfg["pca_alpha"] * direction
         out = torch.cat([vae.decode(z_new[i:i + cfg["gen_bs"]]).sample
                          for i in range(0, n, cfg["gen_bs"])])
-    return out.clamp(0, 1).detach(), ys
+    out = out.clamp(0, 1) if cfg.get("proxy_clamp", True) else out
+    return out.detach(), ys
 
 
 def awe_proxy(x, y, cfg, device):
@@ -113,5 +114,6 @@ def awe_proxy(x, y, cfg, device):
         mu, _ = vae.encode(xs)
         direction = _pca_shift(mu, cfg)
         z_new = mu + cfg["pca_alpha"] * direction
-        out = vae.decode(z_new, seq_len=seq_len).clamp(0, 1)
+        out = vae.decode(z_new, seq_len=seq_len)
+        out = out.clamp(0, 1) if cfg.get("proxy_clamp", True) else out
     return out.detach(), ys
