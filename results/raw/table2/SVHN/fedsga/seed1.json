@@ -1,0 +1,16 @@
+{
+  "experiment": "table2",
+  "tag": "SVHN",
+  "variant": "fedsga",
+  "seed": 1,
+  "method": "fedsga",
+  "acc_before_unlearn": 0.8338583111763,
+  "asr_before_unlearn": 0.1906883865594864,
+  "acc_post_unlearn": 0.4315073788166046,
+  "asr_post_unlearn": 0.0,
+  "acc_end": 0.831476628780365,
+  "asr_end": 0.05739090219140053,
+  "recovery_round_95": 51,
+  "recovery_round_full": 52,
+  "unlearn_time_s": 1.4287216663360596
+}

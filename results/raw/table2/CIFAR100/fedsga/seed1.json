@@ -1,0 +1,16 @@
+{
+  "experiment": "table2",
+  "tag": "CIFAR100",
+  "variant": "fedsga",
+  "seed": 1,
+  "method": "fedsga",
+  "acc_before_unlearn": 0.4412999749183655,
+  "asr_before_unlearn": 0.18859998881816864,
+  "acc_post_unlearn": 0.009999999776482582,
+  "asr_post_unlearn": 0.0,
+  "acc_end": 0.4626999795436859,
+  "asr_end": 0.007499999832361937,
+  "recovery_round_95": 53,
+  "recovery_round_full": 54,
+  "unlearn_time_s": 2.7758681774139404
+}

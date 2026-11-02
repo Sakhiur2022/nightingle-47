@@ -1,0 +1,16 @@
+{
+  "experiment": "table3",
+  "tag": "EuroSAT",
+  "variant": "fedsga",
+  "seed": 0,
+  "method": "fedsga",
+  "acc_before_unlearn": 0.6994444727897644,
+  "asr_before_unlearn": 0.23537036776542664,
+  "acc_post_unlearn": 0.11222222447395325,
+  "asr_post_unlearn": 0.0,
+  "acc_end": 0.7862963080406189,
+  "asr_end": 0.17759259045124054,
+  "recovery_round_95": 53,
+  "recovery_round_full": 53,
+  "unlearn_time_s": 0.8759763240814209
+}

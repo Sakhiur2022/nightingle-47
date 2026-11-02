@@ -1,0 +1,16 @@
+{
+  "experiment": "scalability",
+  "tag": "SVHN-100",
+  "variant": "not",
+  "seed": 1,
+  "method": "not",
+  "acc_before_unlearn": 0.8796480894088745,
+  "asr_before_unlearn": 0.08385832607746124,
+  "acc_post_unlearn": 0.0016133988974615932,
+  "asr_post_unlearn": 0.02251075580716133,
+  "acc_end": 0.7513060569763184,
+  "asr_end": 0.0732559934258461,
+  "recovery_round_95": null,
+  "recovery_round_full": null,
+  "unlearn_time_s": 0.0003981590270996094
+}

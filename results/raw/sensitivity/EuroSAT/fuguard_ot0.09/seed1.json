@@ -1,0 +1,16 @@
+{
+  "experiment": "sensitivity",
+  "tag": "EuroSAT",
+  "variant": "fuguard_ot0.09",
+  "seed": 1,
+  "method": "fuguard",
+  "acc_before_unlearn": 0.7470370531082153,
+  "asr_before_unlearn": 0.2105555534362793,
+  "acc_post_unlearn": 0.6018518209457397,
+  "asr_post_unlearn": 0.036296296864748,
+  "acc_end": 0.7509258985519409,
+  "asr_end": 0.19629628956317902,
+  "recovery_round_95": 52,
+  "recovery_round_full": 52,
+  "unlearn_time_s": 0.46860527992248535
+}

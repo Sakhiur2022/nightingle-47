@@ -1,0 +1,16 @@
+{
+  "experiment": "sensitivity",
+  "tag": "CIFAR10",
+  "variant": "fuguard_ot0.08",
+  "seed": 0,
+  "method": "fuguard",
+  "acc_before_unlearn": 0.6355999708175659,
+  "asr_before_unlearn": 0.16359999775886536,
+  "acc_post_unlearn": 0.09999999403953552,
+  "asr_post_unlearn": 0.0,
+  "acc_end": 0.6154999732971191,
+  "asr_end": 0.05939999967813492,
+  "recovery_round_95": 53,
+  "recovery_round_full": null,
+  "unlearn_time_s": 2.8122763633728027
+}

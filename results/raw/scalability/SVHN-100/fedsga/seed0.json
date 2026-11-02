@@ -1,0 +1,16 @@
+{
+  "experiment": "scalability",
+  "tag": "SVHN-100",
+  "variant": "fedsga",
+  "seed": 0,
+  "method": "fedsga",
+  "acc_before_unlearn": 0.8832590579986572,
+  "asr_before_unlearn": 0.08189919590950012,
+  "acc_post_unlearn": 0.8600568175315857,
+  "asr_post_unlearn": 0.04167947173118591,
+  "acc_end": 0.8865242600440979,
+  "asr_end": 0.0752919465303421,
+  "recovery_round_95": 51,
+  "recovery_round_full": 51,
+  "unlearn_time_s": 0.11051201820373535
+}

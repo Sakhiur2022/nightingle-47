@@ -1,0 +1,16 @@
+{
+  "experiment": "table2",
+  "tag": "SVHN",
+  "variant": "fastfedul",
+  "seed": 1,
+  "method": "fastfedul",
+  "acc_before_unlearn": 0.8338583111763,
+  "asr_before_unlearn": 0.1906883865594864,
+  "acc_post_unlearn": 0.40500152111053467,
+  "asr_post_unlearn": 0.0,
+  "acc_end": 0.8351259827613831,
+  "asr_end": 0.06407498568296432,
+  "recovery_round_95": 51,
+  "recovery_round_full": 52,
+  "unlearn_time_s": 0.0025675296783447266
+}

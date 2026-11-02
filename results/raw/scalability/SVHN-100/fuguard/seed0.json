@@ -1,0 +1,16 @@
+{
+  "experiment": "scalability",
+  "tag": "SVHN-100",
+  "variant": "fuguard",
+  "seed": 0,
+  "method": "fuguard",
+  "acc_before_unlearn": 0.8832590579986572,
+  "asr_before_unlearn": 0.08189919590950012,
+  "acc_post_unlearn": 0.8655884861946106,
+  "asr_post_unlearn": 0.042562998831272125,
+  "acc_end": 0.8870236277580261,
+  "asr_end": 0.07137369364500046,
+  "recovery_round_95": 51,
+  "recovery_round_full": 51,
+  "unlearn_time_s": 0.522892951965332
+}

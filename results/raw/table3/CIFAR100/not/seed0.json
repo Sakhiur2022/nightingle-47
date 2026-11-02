@@ -1,0 +1,16 @@
+{
+  "experiment": "table3",
+  "tag": "CIFAR100",
+  "variant": "not",
+  "seed": 0,
+  "method": "not",
+  "acc_before_unlearn": 0.44919997453689575,
+  "asr_before_unlearn": 0.12199999392032623,
+  "acc_post_unlearn": 0.0,
+  "asr_post_unlearn": 0.0,
+  "acc_end": 0.46939998865127563,
+  "asr_end": 0.008100000210106373,
+  "recovery_round_95": 64,
+  "recovery_round_full": 72,
+  "unlearn_time_s": 0.0003275871276855469
+}

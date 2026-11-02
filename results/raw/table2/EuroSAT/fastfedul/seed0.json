@@ -1,0 +1,16 @@
+{
+  "experiment": "table2",
+  "tag": "EuroSAT",
+  "variant": "fastfedul",
+  "seed": 0,
+  "method": "fastfedul",
+  "acc_before_unlearn": 0.6994444727897644,
+  "asr_before_unlearn": 0.23537036776542664,
+  "acc_post_unlearn": 0.21537037193775177,
+  "asr_post_unlearn": 0.0,
+  "acc_end": 0.7451851963996887,
+  "asr_end": 0.1890740692615509,
+  "recovery_round_95": 52,
+  "recovery_round_full": 52,
+  "unlearn_time_s": 0.0030586719512939453
+}

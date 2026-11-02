@@ -1,0 +1,16 @@
+{
+  "experiment": "table2",
+  "tag": "SVHN",
+  "variant": "fu",
+  "seed": 1,
+  "method": "fu",
+  "acc_before_unlearn": 0.8338583111763,
+  "asr_before_unlearn": 0.1906883865594864,
+  "acc_post_unlearn": 0.8275583982467651,
+  "asr_post_unlearn": 0.05635371804237366,
+  "acc_end": 0.831476628780365,
+  "asr_end": 0.1034880131483078,
+  "recovery_round_95": 51,
+  "recovery_round_full": 51,
+  "unlearn_time_s": 0.07511687278747559
+}

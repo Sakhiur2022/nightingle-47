@@ -1,0 +1,16 @@
+{
+  "experiment": "sensitivity",
+  "tag": "SVHN",
+  "variant": "fuguard_ot0.09",
+  "seed": 1,
+  "method": "fuguard",
+  "acc_before_unlearn": 0.8338583111763,
+  "asr_before_unlearn": 0.1906883865594864,
+  "acc_post_unlearn": 0.3071604073047638,
+  "asr_post_unlearn": 0.0,
+  "acc_end": 0.8360863327980042,
+  "asr_end": 0.060963429510593414,
+  "recovery_round_95": 52,
+  "recovery_round_full": 55,
+  "unlearn_time_s": 1.440457820892334
+}

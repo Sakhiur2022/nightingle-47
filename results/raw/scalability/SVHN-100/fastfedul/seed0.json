@@ -1,0 +1,16 @@
+{
+  "experiment": "scalability",
+  "tag": "SVHN-100",
+  "variant": "fastfedul",
+  "seed": 0,
+  "method": "fastfedul",
+  "acc_before_unlearn": 0.8832590579986572,
+  "asr_before_unlearn": 0.08189919590950012,
+  "acc_post_unlearn": 0.6148586273193359,
+  "asr_post_unlearn": 0.0,
+  "acc_end": 0.8858712315559387,
+  "asr_end": 0.06730177998542786,
+  "recovery_round_95": 51,
+  "recovery_round_full": 54,
+  "unlearn_time_s": 0.0029535293579101562
+}

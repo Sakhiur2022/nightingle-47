@@ -1,0 +1,16 @@
+{
+  "experiment": "table3",
+  "tag": "CIFAR10",
+  "variant": "fastfedul",
+  "seed": 0,
+  "method": "fastfedul",
+  "acc_before_unlearn": 0.6355999708175659,
+  "asr_before_unlearn": 0.16359999775886536,
+  "acc_post_unlearn": 0.14869999885559082,
+  "asr_post_unlearn": 0.0,
+  "acc_end": 0.6571999788284302,
+  "asr_end": 0.08919999748468399,
+  "recovery_round_95": 52,
+  "recovery_round_full": 52,
+  "unlearn_time_s": 0.0026693344116210938
+}

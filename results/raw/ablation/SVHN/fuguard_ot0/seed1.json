@@ -1,0 +1,16 @@
+{
+  "experiment": "ablation",
+  "tag": "SVHN",
+  "variant": "fuguard_ot0",
+  "seed": 1,
+  "method": "fuguard",
+  "acc_before_unlearn": 0.8338583111763,
+  "asr_before_unlearn": 0.1906883865594864,
+  "acc_post_unlearn": 0.19587430357933044,
+  "asr_post_unlearn": 0.0,
+  "acc_end": 0.8368546366691589,
+  "asr_end": 0.06538106501102448,
+  "recovery_round_95": 52,
+  "recovery_round_full": 53,
+  "unlearn_time_s": 1.3456523418426514
+}
