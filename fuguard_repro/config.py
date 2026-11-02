@@ -50,6 +50,11 @@ BASE_IMAGE_CONFIG = dict(
     distance_threshold=2.2,              # [repo] FU
     fastfedul_scale=1.0,                 # [repo]
     compute_mia=True,
+    # --- switches for "repo vs paper text" variants (defaults = repo behaviour) ---
+    trigger_mode="repo",       # "white": true white patch (1-mean)/std; the repo's EuroSAT constant encodes gray (~0.65)
+    proxy_clamp=True,          # repo clamps decoded proxies to [0,1] although real inputs are mean/std-normalised
+    baseline_bs=None,          # None: FedSGA/FU use batch_size (256) as in the repo; FuGuard uses unlearn_bs (32)
+    not_layers=None,           # None: NoT negates ALL parameters (repo); else list of name prefixes e.g. ["features.0"]
 )
 
 
@@ -85,6 +90,7 @@ BASE_AWE_CONFIG = dict(
     vae_hidden=256, vae_latent=32, vae_epochs=1000, vae_lr=1e-3,
     distance_threshold=2.2, fastfedul_scale=1.0,
     compute_mia=False,                   # the AWE scripts never computed MIA
+    proxy_clamp=True, baseline_bs=None, not_layers=None,
 )
 
 
