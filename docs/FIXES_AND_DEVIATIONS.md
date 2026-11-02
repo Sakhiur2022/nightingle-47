@@ -38,7 +38,7 @@
 * Data kept on the GPU, mini-batching by `randperm`; datasets stored as tensors (the repo pickled dataset objects tied to module paths).
 
 ## Kept exactly as in the repo (flagging, not changing)
-* Unlearning batch size 32 (paper: "same as training"); SD-VAE gets mean/std-normalised images and decoded proxies are clamped to [0,1].
+* Unlearning batch size: **FuGuard 32** (image) / 64 (AWE) but **FedSGA and FU use the training batch size** 256 (image) / 32 (AWE) - not like-for-like (paper: "same as training"). Switches: `unlearn_bs`, `baseline_bs`. SD-VAE gets mean/std-normalised images and decoded proxies are clamped to [0,1].
 * ASR counts all test images (target-class images are untriggered but count as "success" if predicted 9) -> ASR has a non-zero floor.
 * MIA = Yeom loss-threshold attack, plotted value = `attack_acc` (median-member-loss threshold; members = forgotten client's data, non-members = clean test set).
 
@@ -47,3 +47,25 @@
 * Fig. 10's level (CIFAR-10 ACC~0.69/ASR~0.14 at lambda=0.1) differs from Table II (63.8/7.67): its setting is not described.
 * Paper's Table II lists identical EuroSAT numbers for FedSGA and FU (74.61+-0.87 / 15.74+-4.02): possibly a typo, so do not expect both to match.
 * Fig. 3/4/5/7/8 had no reference image; those plots follow the paper's descriptions.
+
+## Review of 14 reported discrepancies (paper text vs official code)
+Our goal is to reproduce the *paper's numbers*, which were produced by the *official code*, so by default we keep the repo's behaviour and add switches
+(notebook `02g_repo_vs_paper_text_variants`) to measure how much each discrepancy matters. "Verified" = checked by me against code, paper text or the cited method paper.
+
+| # | Verdict | Switch / action |
+|---|---|---|
+| 1 EuroSAT trigger is gray, not white | **Verified.** CIFAR-10/100 and SVHN constants equal (1-mean)/std; EuroSAT's (2.19, 2.00, 2.18) encodes pixels ~(0.67, 0.63, 0.65); true white is (4.36, 5.00, 5.45) | `trigger_mode="white"` (separate data folder) |
+| 2 Adam vs SGD locally | real; your decision, documented | `optimizer="sgd"` |
+| 3 unlearning batch sizes differ | **Verified**; doc sentence was imprecise (fixed above) | `unlearn_bs`, `baseline_bs` |
+| 4 "a portion" vs inject_ratio=1.0 | **Verified**: paper (images) says a portion, never gives the ratio; AWE says all | `inject_ratio=<x>` |
+| 5 Fast-FedUL | **Verified**: the original analyses the target client's influence across historical rounds (recursive estimate, O(T*N)); the repo subtracts one last-round update with scale 1. The repo's baseline is a simplification | not reimplemented (needs the original algorithm; tell me if you want it) |
+| 6 proxy clamp [0,1] on normalised data | real, applies to image and AWE; effect unknown | `proxy_clamp=False` |
+| 7 49+1+5 rounds | real, documented | `unlearn_round=51` |
+| 8 "30-s step" vs window 30 / stride 10 | paper wording ambiguous (window length vs step); repo explicit | none (needs the authors) |
+| 9 trigger only touches UB features | consistent with the code (features 0, 5-7 lie in the UB half); paper says "channel and time point" | none |
+| 10 ASR floor | real, documented | none |
+| 11 ddof | real; irrelevant to correctness; with 2 seeds either value is rough | `aggregate.STD_DDOF` |
+| 12 NoT negates all parameters | **Verified** vs the NoT paper: it negates selected layers ("layer-wise negation by layer indices"); the repo negates every parameter. Which layers the NoT authors default to was not verified | `not_layers=["features.0"]` etc. |
+| 13 LSTM details | paper: 2-layer LSTM, 128 hidden, dropout; code adds bidirectional + dropout 0.3 | minor |
+| 14 MIA | wording vs implementation as described; paper never names the attack | none |
+Paper line on baselines: they all use "the same recovery protocol" as FuGuard - which is how the engine runs them.
