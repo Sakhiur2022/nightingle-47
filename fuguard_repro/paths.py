@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 
 ROOT = Path(os.environ.get("FUGUARD_ROOT", Path(__file__).resolve().parent.parent)).resolve()
-DATA_DIR = ROOT / "data"                      # raw downloads (torchvision, EuroSAT, AWE json)
+DATA_DIR = Path(os.environ.get("FUGUARD_DATA_DIR", ROOT / "data")).resolve()   # raw downloads + processed splits (override with FUGUARD_DATA_DIR)
 PROCESSED_DIR = DATA_DIR / "processed"        # federated splits + backdoored data
 CKPT_DIR = ROOT / "artifacts" / "checkpoints" # shared pre-unlearning training checkpoints
 RESULTS_DIR = ROOT / "results"
