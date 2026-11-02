@@ -37,8 +37,9 @@ def fedsga(ctx):
     x, y = ctx.target_data
     opt = torch.optim.SGD(model.parameters(), lr=cfg["forgetting_lr"])
     model.train()
+    bs = cfg.get("baseline_bs") or cfg["batch_size"]
     for _ in range(cfg["forgetting_epoch"]):
-        for xb, yb in iterate_batches(x, y, cfg["batch_size"], True):
+        for xb, yb in iterate_batches(x, y, bs, True):
             opt.zero_grad()
             (-F.cross_entropy(model(xb), yb)).backward()
             opt.step()
@@ -46,9 +47,11 @@ def fedsga(ctx):
 
 # ------------------------------------------------------------------ NoT (Khalil et al.)
 def not_(ctx):
+    layers = ctx.cfg.get("not_layers")          # None = every parameter (what the repo does)
     with torch.no_grad():
-        for p in ctx.global_model.parameters():
-            p.mul_(-1.0)
+        for name, p in ctx.global_model.named_parameters():
+            if layers is None or any(name.startswith(l) for l in layers):
+                p.mul_(-1.0)
 
 
 # ------------------------------------------------------------------ Fast-FedUL (Huynh et al.)
@@ -93,7 +96,7 @@ def fu(ctx):
     for _ in range(cfg["forgetting_epoch"]):
         if stop:
             break
-        for xb, yb in iterate_batches(x, y, cfg["batch_size"], True):
+        for xb, yb in iterate_batches(x, y, cfg.get("baseline_bs") or cfg["batch_size"], True):
             opt.zero_grad()
             (-F.cross_entropy(model(xb), yb)).backward()
             opt.step()
