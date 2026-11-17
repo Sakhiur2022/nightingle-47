@@ -1,0 +1,16 @@
+{
+  "experiment": "variant_eurosat_white_trigger",
+  "tag": "EuroSAT",
+  "variant": "fastfedul",
+  "seed": 0,
+  "method": "fastfedul",
+  "acc_before_unlearn": 0.7059259414672852,
+  "asr_before_unlearn": 0.3162963092327118,
+  "acc_post_unlearn": 0.1666666716337204,
+  "asr_post_unlearn": 0.0,
+  "acc_end": 0.738703727722168,
+  "asr_end": 0.18407407402992249,
+  "recovery_round_95": 52,
+  "recovery_round_full": 52,
+  "unlearn_time_s": 0.0023040771484375
+}

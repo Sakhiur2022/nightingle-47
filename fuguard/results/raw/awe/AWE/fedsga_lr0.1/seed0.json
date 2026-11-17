@@ -1,0 +1,16 @@
+{
+  "experiment": "awe",
+  "tag": "AWE",
+  "variant": "fedsga_lr0.1",
+  "seed": 0,
+  "method": "fedsga",
+  "acc_before_unlearn": 0.7988505959510803,
+  "asr_before_unlearn": 0.5862069129943848,
+  "acc_post_unlearn": 0.1666666716337204,
+  "asr_post_unlearn": 0.0,
+  "acc_end": 0.3247126340866089,
+  "asr_end": 0.3965517282485962,
+  "recovery_round_95": null,
+  "recovery_round_full": null,
+  "unlearn_time_s": 0.23856592178344727
+}

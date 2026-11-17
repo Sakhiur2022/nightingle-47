@@ -1,0 +1,16 @@
+{
+  "experiment": "variant_local_sgd",
+  "tag": "CIFAR10",
+  "variant": "fastfedul",
+  "seed": 0,
+  "method": "fastfedul",
+  "acc_before_unlearn": 0.4486999809741974,
+  "asr_before_unlearn": 0.20809999108314514,
+  "acc_post_unlearn": 0.16939999163150787,
+  "asr_post_unlearn": 0.0,
+  "acc_end": 0.44029998779296875,
+  "asr_end": 0.07129999995231628,
+  "recovery_round_95": 53,
+  "recovery_round_full": null,
+  "unlearn_time_s": 0.0023207664489746094
+}

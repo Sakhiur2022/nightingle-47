@@ -1,0 +1,16 @@
+{
+  "experiment": "variant_local_sgd",
+  "tag": "CIFAR10",
+  "variant": "retrain",
+  "seed": 1,
+  "method": "retrain",
+  "acc_before_unlearn": 0.5038999915122986,
+  "asr_before_unlearn": 0.14059999585151672,
+  "acc_post_unlearn": 0.08969999849796295,
+  "asr_post_unlearn": 0.10289999842643738,
+  "acc_end": 0.2946999967098236,
+  "asr_end": 0.04809999838471413,
+  "recovery_round_95": null,
+  "recovery_round_full": null,
+  "unlearn_time_s": 0.0041162967681884766
+}

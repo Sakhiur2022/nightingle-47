@@ -1,0 +1,16 @@
+{
+  "experiment": "awe",
+  "tag": "AWE",
+  "variant": "retrain",
+  "seed": 0,
+  "method": "retrain",
+  "acc_before_unlearn": 0.7988505959510803,
+  "asr_before_unlearn": 0.5862069129943848,
+  "acc_post_unlearn": 0.14942528307437897,
+  "asr_post_unlearn": 0.03793103247880936,
+  "acc_end": 0.7356321811676025,
+  "asr_end": 0.25517240166664124,
+  "recovery_round_95": null,
+  "recovery_round_full": null,
+  "unlearn_time_s": 0.011928319931030273
+}

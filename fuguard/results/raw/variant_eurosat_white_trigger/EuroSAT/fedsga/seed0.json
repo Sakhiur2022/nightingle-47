@@ -1,0 +1,16 @@
+{
+  "experiment": "variant_eurosat_white_trigger",
+  "tag": "EuroSAT",
+  "variant": "fedsga",
+  "seed": 0,
+  "method": "fedsga",
+  "acc_before_unlearn": 0.7059259414672852,
+  "asr_before_unlearn": 0.3162963092327118,
+  "acc_post_unlearn": 0.11222222447395325,
+  "asr_post_unlearn": 0.0,
+  "acc_end": 0.7448148131370544,
+  "asr_end": 0.09444444626569748,
+  "recovery_round_95": 53,
+  "recovery_round_full": 53,
+  "unlearn_time_s": 0.8581345081329346
+}

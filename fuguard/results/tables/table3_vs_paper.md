@@ -1,0 +1,26 @@
+| dataset | method | RR95 ours | RR95 paper | RR1 ours | RR1 paper |
+|---|---|---|---|---|---|
+| SVHN | Retrain | 16 | 12 | 33 | 27 |
+| SVHN | FedSGA | 4 | 1 | 17 | 1 |
+| SVHN | FU | 1 | 1 | 1 | 1 |
+| SVHN | NoT | 22 | 18 | 50 | 50 |
+| SVHN | FastFedUL | 1 | 1 | 2 | 1 |
+| SVHN | FuGuard | 3 | 1 | 17 | 1 |
+| EuroSAT | Retrain | 12 | 34 | 16 | 46 |
+| EuroSAT | FedSGA | 3 | 2 | 3 | 3 |
+| EuroSAT | FU | 1 | 2 | 1 | 3 |
+| EuroSAT | NoT | 9 | 20 | 18 | 35 |
+| EuroSAT | FastFedUL | 2 | 2 | 2 | 3 |
+| EuroSAT | FuGuard | 2 | 2 | 3 | 6 |
+| CIFAR10 | Retrain | 23 | 20 | 49 | 33 |
+| CIFAR10 | FedSGA | 6 | 1 | 22 | 2 |
+| CIFAR10 | FU | 1 | 1 | 1 | 2 |
+| CIFAR10 | NoT | 22 | 24 | 50 | 50 |
+| CIFAR10 | FastFedUL | 2 | 2 | 2 | 2 |
+| CIFAR10 | FuGuard | 3 | 1 | 13 | 2 |
+| CIFAR100 | Retrain | 11 | 9 | 16 | 12 |
+| CIFAR100 | FedSGA | 4 | 4 | 5 | 5 |
+| CIFAR100 | FU | 1 | 1 | 1 | 1 |
+| CIFAR100 | NoT | 14 | 11 | 22 | 14 |
+| CIFAR100 | FastFedUL | 1 | 1 | 1 | 1 |
+| CIFAR100 | FuGuard | 2 | 2 | 2 | 2 |

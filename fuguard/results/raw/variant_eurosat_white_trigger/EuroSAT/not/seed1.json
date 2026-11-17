@@ -1,0 +1,16 @@
+{
+  "experiment": "variant_eurosat_white_trigger",
+  "tag": "EuroSAT",
+  "variant": "not",
+  "seed": 1,
+  "method": "not",
+  "acc_before_unlearn": 0.7427777647972107,
+  "asr_before_unlearn": 0.27314814925193787,
+  "acc_post_unlearn": 0.007037037052214146,
+  "asr_post_unlearn": 0.01462962944060564,
+  "acc_end": 0.6059259176254272,
+  "asr_end": 0.09314814954996109,
+  "recovery_round_95": null,
+  "recovery_round_full": null,
+  "unlearn_time_s": 0.0003211498260498047
+}

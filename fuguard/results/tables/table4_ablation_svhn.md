@@ -1,0 +1,6 @@
+| λ_OT | mode | ACC ours | ACC paper | ASR ours | ASR paper | seeds |
+|---|---|---|---|---|---|---|
+| 0.0 | only unlearn | 14.37 | 19.58 | 0.0 | 0.0 | 2 |
+| 0.0 | with recovery | 83.31 | 75.72 | 5.06 | 4.44 | 2 |
+| 0.1 | only unlearn | 20.28 | 17.32 | 0.0 | 0.0 | 2 |
+| 0.1 | with recovery | 83.29 | 82.85 | 4.22 | 4.09 | 2 |

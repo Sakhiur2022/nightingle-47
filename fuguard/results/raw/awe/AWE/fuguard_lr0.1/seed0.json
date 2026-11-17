@@ -1,0 +1,16 @@
+{
+  "experiment": "awe",
+  "tag": "AWE",
+  "variant": "fuguard_lr0.1",
+  "seed": 0,
+  "method": "fuguard",
+  "acc_before_unlearn": 0.7988505959510803,
+  "asr_before_unlearn": 0.5862069129943848,
+  "acc_post_unlearn": 0.6752873659133911,
+  "asr_post_unlearn": 0.0,
+  "acc_end": 0.8505747318267822,
+  "asr_end": 0.2896551787853241,
+  "recovery_round_95": 102,
+  "recovery_round_full": 103,
+  "unlearn_time_s": 9.514825344085693
+}
