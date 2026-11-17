@@ -1,0 +1,6 @@
+# Kaggle / Colab already ship torch, torchvision, numpy, pandas, matplotlib and ipywidgets: install only what may be missing.
+tabulate
+transformers>=4.38
+datasets>=2.18
+huggingface_hub
+sentencepiece         # lets AutoTokenizer convert slow tokenizers (belt and braces: the loader also falls back to BertTokenizer)
