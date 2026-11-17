@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+# data, artifacts, results and logs are generated: keep the folders, not their content
+data/raw/*
+data/processed/*
+artifacts/checkpoints/*
+artifacts/features/*
+artifacts/filters/*
+results/raw/*
+results/tables/*
+results/figures/*
+logs/*
+!**/.gitkeep
+!**/README.md
