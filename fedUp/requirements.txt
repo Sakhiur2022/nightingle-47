@@ -1,0 +1,11 @@
+torch>=2.1
+torchvision>=0.16
+numpy
+pandas
+matplotlib
+tabulate
+transformers>=4.38        # AG News text model (BERT-tiny)
+datasets>=2.18            # AG News download
+huggingface_hub
+nbformat                  # only to validate the notebooks
+ipywidgets                # the interactive backdoor explorer
